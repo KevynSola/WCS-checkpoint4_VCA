@@ -13,12 +13,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/register', name: 'app_register')]
-    public function register(
+    #[Route('/register-user', name: 'app_register_user')]
+    public function registerUser(
         Request $request,
         UserPasswordHasherInterface $userPasswordHasher,
         EntityManagerInterface $entityManager
-    ): Response {
+    ): Response
+    {
 
         $user = new User();
         $form = $this->createForm(RegistrationType::class, $user);
@@ -37,10 +38,10 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_login_user');
         }
 
-        return $this->render('registration/index.html.twig', [
+        return $this->render('registration/indexUser.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }
