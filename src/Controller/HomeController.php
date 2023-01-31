@@ -19,4 +19,9 @@ class HomeController extends AbstractController
     {
         return $this->render('home/index.html.twig');
     }
+
+    public function legal(): Response
+    {
+        return $this->render('legalNotices/index.html.twig');
+    }
 }
