@@ -1,2 +1,21 @@
 @import "theme";
 @import "~bootstrap/scss/bootstrap";
+
+body {
+    font-family: $font-family-body;
+    font-weight: $font-weight-body-reg;
+    min-height: 100vh;
+    color: $light;
+    background-color: $dark;
+}
+
+h1 {
+    font-family: $font-family-body;
+    font-weight: $font-weight-title;
+}
+
+h2, h3, h4, h5, h6{
+    font-family: $font-family-subtitle;
+}
+
+@import "landing";
