@@ -22,10 +22,10 @@ class KillerFixtures extends Fixture
     {
         for ($i = 1; $i <= self::NB_KILLER; $i++){
             $killer = new Killer();
-            $killer->setUsername('killer_' . $i);
-            $hashedPassword = $this->passwordHasher->hashPassword($killer, 'killerpassword');
-            $killer->setPassword($hashedPassword);
-            $killer->setRoles(['ROLE_KILLER']);
+            // $killer->setUsername('killer_' . $i);
+            // $hashedPassword = $this->passwordHasher->hashPassword($killer, 'killerpassword');
+            // $killer->setPassword($hashedPassword);
+            // $killer->setRoles(['ROLE_KILLER']);
             $killer->setAvatar('image_' . $i . '.jpg');
             $killer->setSkills(['knife', 'gun', 'fist']);
             $manager->persist($killer);

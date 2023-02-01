@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/register-user', name: 'app_register_user')]
+    #[Route('/register', name: 'app_register')]
     public function registerUser(
         Request $request,
         UserPasswordHasherInterface $userPasswordHasher,
@@ -40,43 +40,10 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
             // do anything else you need here, like send an email or flash message
 
-            return $this->redirectToRoute('app_login_user');
+            return $this->redirectToRoute('app_login');
         }
 
-        return $this->render('registration/indexUser.html.twig', [
-            'registrationForm' => $form->createView(),
-        ]);
-    }
-
-    #[Route('/register-killer', name: 'app_register_killer')]
-    public function registerKiller(
-        Request $request,
-        UserPasswordHasherInterface $killerPasswordHasher,
-        EntityManagerInterface $entityManager
-    ): Response
-    {
-
-        $killer = new Killer();
-        $form = $this->createForm(RegistrationKillerType::class, $killer);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            $killer->setPassword(
-                $killerPasswordHasher->hashPassword(
-                    $killer,
-                    $form->get('plainPassword')->getData()
-                )
-            );
-
-            $entityManager->persist($killer);
-            $entityManager->flush();
-            // do anything else you need here, like send an email or flash message
-
-            return $this->redirectToRoute('app_login_killer');
-        }
-
-        return $this->render('registration/indexKiller.html.twig', [
+        return $this->render('registration/index.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }

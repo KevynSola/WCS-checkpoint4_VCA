@@ -16,6 +16,14 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
+	<header>
+		{% if is_granted('ROLE_USER') %}
+			{% include "/components/_navbar.html.twig" %}
+		{% endif %}
+		{% if is_granted('ROLE_KILLER') %}
+			{% include "/components/_navbarKiller.html.twig" %}
+		{% endif %}
+	</header>
 	<body>
 		{% block body %}{% endblock %}
 	</body>

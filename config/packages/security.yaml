@@ -13,15 +13,6 @@ security:
       entity:
         class: App\Entity\User
         property: username
-    
-    app_killer_provider:
-      entity:
-        class: App\Entity\Killer
-        property: username
-
-    app_users:
-      chain:
-        providers: ['app_user_provider', 'app_killer_provider']
   firewalls:
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -31,20 +22,8 @@ security:
       provider: app_user_provider
       form_login:
         # "app_login" is the name of the route created previously
-        login_path: app_login_user
-        check_path: app_login_user
-        default_target_path: app_choice
-        enable_csrf: true
-      logout:
-        path: app_logout
-    
-    killer:
-      lazy: true
-      provider: app_killer_provider
-      form_login:
-        login_path: app_login_killer
-        check_path: app_login_killer
-        default_target_path: app_dashboard
+        login_path: app_login
+        check_path: app_login
         enable_csrf: true
       logout:
         path: app_logout

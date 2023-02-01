@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{parent()}}| Register Killer
+	{{parent()}}| Register User
 {% endblock %}
 
 {% block body %}
 	<main>
-		<h1>Register</h1>
+		<h1>Register USER</h1>
 		{{ form_start(registrationForm) }}
 		<button type="submit">Register</button>
 		{{ form_end(registrationForm) }}
-		<a href="{{ path('app_login_user') }}" class="">Back</a>
+		<a href="{{ path('app_login') }}" class="">Back</a>
 	</main>
 {% endblock %}
