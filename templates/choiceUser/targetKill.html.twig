@@ -15,9 +15,13 @@
 					<p>{{skill}}</p>
 				{% endfor %}
 				<p>{{killer.biography}}</p>
-				<p class="bg-danger">Form target + entity à prévoir</p>
+				<div class="form-target">
+					{{ form_start(targetForm) }}
+					<button type="submit">Kill</button>
+					{{ form_end(targetForm) }}
+				</div>
 			</div>
-            <a href="{{path('app_choice')}}">Back</a>
+			<a href="{{path('app_choice')}}">Back</a>
 		</div>
 	</section>
 {% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}| Valid Order
+{% endblock %}
+
+{% block body %}
+	<section>
+		<div class="container">
+			<h1>Order</h1>
+			<div class="card">
+				<p>Thank’s to use our service. See you soon...</p>
+			</div>
+			<a href="{{path('app_logout')}}">Logout</a>
+		</div>
+	</section>
+{% endblock %}
