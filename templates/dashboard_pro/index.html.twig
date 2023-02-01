@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DashboardProController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% for killer in killers %}
+            
+        <h1>Dashboard {{killer.username}}</h1>
+        <div class="card">
+            
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

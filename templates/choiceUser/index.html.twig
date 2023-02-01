@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}| Choose Killer
+{% endblock %}
+
+{% block body %}
+	<section>
+		<div class="container">
+			<h1>Choose your killer</h1>
+			<div class="row">
+				{% for killer in killers %}
+					<div class="col-3">
+						<div class="card">
+							<h2>{{killer.username}}</h2>
+							<img src="{{killer.avatar}}" alt="{{killer.avatar}}">
+							{% for skill in killer.skills %}
+								<p>{{skill}}</p>
+							{% endfor %}
+							<p>{{killer.biography}}</p>
+                            <a href="{{path('app_choice_killer', {'killer': killer.id})}}">Choose this?</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+            <a href="{{path('app_logout')}}">Logout</a>
+		</div>
+	</section>
+{% endblock %}

@@ -27,10 +27,10 @@ class Killer implements PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $avatar = null;
 
-    #[ORM\Column(type: Types::ARRAY)]
+    #[ORM\Column]
     private array $skills = [];
 
-    #[ORM\Column(type: Types::ARRAY)]
+    #[ORM\Column]
     private array $roles = [];
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
