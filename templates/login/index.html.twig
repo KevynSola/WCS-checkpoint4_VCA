@@ -5,29 +5,30 @@
 {% endblock %}
 
 {% block body %}
-	{% if error %}
-		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-	{% endif %}
+	<div class="container login-page">
+		<h1 class="text-center my-5">Login</h1>
+		{% if error %}
+			<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
 
-	{% if app.user %}
-		<a href="{{'app_logout'}}">Logout</a>
-	{% endif %}
+		<div class="card login-card">
+			<form action="{{ path('app_login') }}" class="form-login" method="post">
+				<label for="username" class="form-label">Username:</label>
+				<input type="text" id="username" class="form-control form-control-lg" name="_username" value="{{ last_username }}">
 
-	<form action="{{ path('app_login') }}" method="post">
-		<label for="username">Username:</label>
-		<input type="text" id="username" name="_username" value="{{ last_username }}">
+				<label for="password" class="form-label mt-4">Password:</label>
+				<input type="password" class="form-control form-control-lg" id="password" name="_password">
+				<input
+				type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+				{# If you want to control the URL the user is redirected to on success #}
+				<input type="hidden" name="_target_path" value="{{path('app_choice')}}">
 
-		<label for="password">Password:</label>
-		<input type="password" id="password" name="_password">
-		<input
-		type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-		{# If you want to control the URL the user is redirected to on success #}
-		<input type="hidden" name="_target_path" value="{{path('app_choice')}}">
-
-		<button type="submit" name="login">login</button>
-	</form>
-	<p>
-		Not account yet?
-		<a href="{{path('app_register')}}">Sign up</a>
-	</p>
+				<button type="submit" class="btn btn-lg btn-dark my-5" name="login">login</button>
+			</form>
+			<p class="text-center">
+				Not account yet?
+				<a href="{{path('app_register')}}" class="fs-5">Sign up</a>
+			</p>
+		</div>
+	</div>
 {% endblock %}

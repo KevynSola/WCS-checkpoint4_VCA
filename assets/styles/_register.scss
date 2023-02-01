@@ -1,0 +1,35 @@
+.register-page {
+    display: flex;
+    flex-direction: column;
+
+    .register-card {
+        height: 70vh;
+        color: $dark;
+    }
+
+    .form-register {
+        width: 80%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group .btn {
+            width: 30%;
+            margin: auto;
+        }
+
+        .form-label, .form-control {
+            font-size: 1.5rem;
+        }
+
+        .btn-lg {
+            --bs-btn-font-size: 2.25rem;
+            font-size: var(--bs-btn-font-size);
+        }
+    }
+}
