@@ -6,7 +6,8 @@ body {
     font-weight: $font-weight-body-reg;
     min-height: 100vh;
     color: $light;
-    background-color: $dark;
+    background: url("/assets/images/black-felt.png"), $dark;
+    background-attachment: fixed;
 }
 
 h1 {
@@ -22,3 +23,6 @@ h2, h3, h4, h5, h6{
 @import "landing";
 @import "login";
 @import "register";
+@import "choice";
+@import "targetCard";
+@import "order-msg";

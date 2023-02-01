@@ -6,22 +6,54 @@
 
 {% block body %}
 	<section>
-		<div class="container">
-			<h1>Choose your Target</h1>
-			<div class="card">
-				<h2>{{killer.id}}</h2>
-				<img src="{{killer.avatar}}" alt="{{killer.avatar}}">
-				{% for skill in killer.skills %}
-					<p>{{skill}}</p>
-				{% endfor %}
-				<p>{{killer.biography}}</p>
-				<div class="form-target">
-					{{ form_start(targetForm) }}
-					<button type="submit">Kill</button>
-					{{ form_end(targetForm) }}
+		<div class="container target-page">
+			<h1 class="text-center my-5">Choose your Target</h1>
+			<div class="card target-card">
+				<a href="{{path('app_choice')}}" class="btn btn-lg btn-light btn-back d-flex justify-content-between align-items-center">
+					<div class="bck">
+						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left" viewbox="0 0 16 16">
+							<path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+						</svg>
+						<span>Back</span>
+					</div>
+					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-lg" viewbox="0 0 16 16">
+						<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+					</svg>
+				</a>
+				<div class="row">
+					<div class="col-md-6">
+						<h2 class="h2 mt-3 text-center">
+							<u>Your killer</u>
+						</h2>
+						<h3 class="h3 display-3 text-center">{{killer.id}}</h3>
+						<img
+						src="{{asset('build/images/sushi_cat.png')}}" class="img-card-killer" alt="cats">
+						{# <img src="{{killer.avatar}}" alt="{{killer.avatar}}"> #}
+						<div class="skills-bloc">
+							{% for skill in killer.skills %}
+								<p class="badge bg-sucess fs-4 my-3">{{skill}}</p>
+							{% endfor %}
+						</div>
+						<p class="bio-killer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error facere quam esse quae praesentium, dolore maxime repudiandae, necessitatibus, libero laboriosam architecto beatae? Dolorem deleniti, possimus ipsam minus deserunt architecto quas blanditiis fuga fugiat hic et in maxime, consequatur est. Recusandae excepturi, cupiditate porro minima harum sed odit consequuntur voluptas officia quas ullam rerum nam ea accusamus. Odit eligendi deleniti, sint quo saepe ducimus voluptatum dicta magnam doloribus aspernatur impedit animi, et cumque eos ex pariatur ullam unde ab repudiandae quos beatae quam minima. Nesciunt odio aut vero deserunt nihil consequuntur natus alias dignissimos ipsa quis, corporis expedita ab commodi provident!</p>
+					</div>
+					<div class="col-md-6">
+						<div class="form-target">
+							<h2 class="h2 mt-3 text-center">
+								<u>Your target</u>
+							</h2>
+							{{ form_start(targetForm) }}
+							<div class="form-group">
+								{{ form_row(targetForm.lastname) }}
+								{{ form_row(targetForm.firstname) }}
+								{{ form_row(targetForm.city) }}
+								{{ form_row(targetForm.poster) }}
+								<button type="submit" class="btn btn-lg btn-outline-danger btn-kill my-5">Kill</button>
+							</div>
+							{{ form_end(targetForm) }}
+						</div>
+					</div>
 				</div>
 			</div>
-			<a href="{{path('app_choice')}}">Back</a>
 		</div>
 	</section>
 {% endblock %}

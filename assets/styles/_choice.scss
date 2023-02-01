@@ -1,0 +1,26 @@
+.choice-killer-page {
+    .killer-card {
+        color: $light;
+        background-color: transparent;
+        border: 2px solid $light;
+        padding: 2rem;
+
+        .skills-bloc {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .bio-killer {
+            height: 200px;
+            overflow: auto;
+            border-bottom: 4px solid $light;
+            padding-bottom: 2rem;
+        }
+
+        .img-card-killer {
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+}

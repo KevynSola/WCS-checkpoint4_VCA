@@ -4,7 +4,9 @@
 
     .register-card {
         height: 70vh;
-        color: $dark;
+        color: $light;
+        background-color: transparent;
+        border: 2px solid $light;
     }
 
     .form-register {
@@ -19,7 +21,7 @@
         }
 
         .form-group .btn {
-            width: 30%;
+            width: 70%;
             margin: auto;
         }
 

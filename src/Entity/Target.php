@@ -4,8 +4,14 @@ namespace App\Entity;
 
 use App\Repository\TargetRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: TargetRepository::class)]
+#[UniqueEntity(
+    fields: ['firstname', 'lastname'],
+    errorPath: 'lastname',
+    message: 'This person is already targeted.',
+)]
 class Target
 {
     #[ORM\Id]

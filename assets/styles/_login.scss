@@ -4,7 +4,10 @@
 
     .login-card {
         height: 70vh;
-        color: $dark;
+        color: $light;
+        background-color: transparent;
+        border: 2px solid $blood;
+        box-shadow: inset 2px 2px 50px $blood;
     }
 
     .form-login {
@@ -14,7 +17,7 @@
         flex-direction: column;
 
         .btn {
-            width: 30%;
+            width: 40%;
             margin: auto;
         }
 

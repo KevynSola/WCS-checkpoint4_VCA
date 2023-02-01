@@ -10,6 +10,19 @@ $font-weight-title: 900;
 
 // customize some Bootstrap variables
 $light: #e4e4e4;
-$dark: #2a2a2a;
+$dark: #121212;
+$darkgray: #2a2a2a;
 $intermediate: #3d3d3d;
 $gray: #bdbdbd;
+$blood: #570000;
+$bloodlight: #810b0b;
+
+$theme-colors: (
+    "light": $light,
+    "dark": $dark,
+    "darkgray": $darkgray,
+    "intermediate": $intermediate,
+    "gray": $gray,
+    "blood": $blood,
+    "bloodlight": $bloodlight
+);

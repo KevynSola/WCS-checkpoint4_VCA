@@ -1,0 +1,59 @@
+.target-page {
+    .target-card {
+        height: 70vh;
+        color: $light;
+        background-color: transparent;
+        border: 2px solid $light;
+        margin-bottom: 3rem;
+
+        .row {
+            scrollbar-width: none;
+            overflow-y: scroll;
+        }
+
+        .row::-webkit-scrollbar {
+            display: none;
+        }
+
+        .col-md-6 {
+            padding-inline: 3rem;
+        }
+
+        .skills-bloc {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        .form-group {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group .btn {
+            width: 40%;
+            margin: auto;
+        }
+
+        .form-label, .form-control {
+            font-size: 1.5rem;
+        }
+
+        .btn-lg {
+            --bs-btn-font-size: 2.25rem;
+            font-size: var(--bs-btn-font-size);
+        }
+
+        .img-card-killer {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+        }
+    }
+
+    .btn-back {
+        --bs-card-border-radius: 0.1rem;
+        border-radius: var(--bs-card-border-radius);
+    }
+}

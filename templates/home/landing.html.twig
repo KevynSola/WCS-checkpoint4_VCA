@@ -5,9 +5,10 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container home-page">
-		<h1>Villain's Contract Agency</h1>
-		<a href="{{path('app_login')}}">
+	<div class="home-page">
+		<img src="{{asset('build/images/logo_mort.png')}}" class="landing-img" alt="Landing logo">
+		<h1 class="d-none">Villain's Contract Agency</h1>
+		<a href="{{path('app_login')}}" class="entry">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bullseye" viewbox="0 0 16 16">
 				<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 				<path d="M8 13A5 5 0 1 1 8 3a5 5 0 0 1 0 10zm0 1A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/>
