@@ -25,6 +25,9 @@ class Target
     #[ORM\Column(length: 255)]
     private ?string $poster = null;
 
+    #[ORM\ManyToOne(inversedBy: 'targets')]
+    private ?User $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +77,18 @@ class Target
     public function setPoster(string $poster): self
     {
         $this->poster = $poster;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

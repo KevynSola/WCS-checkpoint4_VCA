@@ -2,15 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Killer;
 use App\Entity\Target;
 use App\Form\TargetType;
 use App\Repository\KillerRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/user')]
 class ChoiceProController extends AbstractController
@@ -31,12 +32,16 @@ class ChoiceProController extends AbstractController
         EntityManagerInterface $entityManager
     ): Response
     {
+        /** @var User $user  */
+        $user = $this->getUser();
+
         $target = new Target();
         $form = $this->createForm(TargetType::class, $target);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
             $killer; // set kill target.
+            $target->setUser($user);
 
             $entityManager->persist($target);
             $entityManager->flush();
