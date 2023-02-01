@@ -9,20 +9,12 @@
 		<h1 class="text-center my-5">Register</h1>
 		<div class="card register-card">
 			<a href="{{ path('app_login') }}" class="btn btn-lg btn-light">Back</a>
-			<div
-				class="selecteur">
-				{# faire un switch pour USER / KILLER à la place de checkbox #}
-				<label for="role-user">USER</label>
-				<input type="checkbox" name="role-user" value="">
-
-				<label for="role-killer">KILLER</label>
-				<input type="checkbox" name="role-killer" value="">
-			</div>
 			<div class="form-register">
 				{{ form_start(registrationForm) }}
 				<div class="form-group">
 					{{ form_row(registrationForm.username) }}
 					{{ form_row(registrationForm.plainPassword) }}
+					{{ form_row(registrationForm.roles) }}
 					<button type="submit" class="btn btn-lg btn-outline-light my-5">Register</button>
 				</div>
 				{{ form_end(registrationForm) }}

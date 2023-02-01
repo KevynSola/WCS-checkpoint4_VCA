@@ -37,6 +37,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Target::class)]
     private Collection $targets;
 
+    #[ORM\OneToOne(inversedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Killer $killer = null;
+
+    #[ORM\Column]
+    private ?bool $isKiller = null;
+
     public function __construct()
     {
         $this->targets = new ArrayCollection();
@@ -138,6 +144,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $target->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getKiller(): ?Killer
+    {
+        return $this->killer;
+    }
+
+    public function setKiller(?Killer $killer): self
+    {
+        $this->killer = $killer;
+
+        return $this;
+    }
+
+    public function isIsKiller(): ?bool
+    {
+        return $this->isKiller;
+    }
+
+    public function setIsKiller(bool $isKiller): self
+    {
+        $this->isKiller = $isKiller;
 
         return $this;
     }
