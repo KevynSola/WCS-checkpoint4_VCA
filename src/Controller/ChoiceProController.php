@@ -40,7 +40,7 @@ class ChoiceProController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            $killer; // set kill target.
+            $target->setKiller($killer);
             $target->setUser($user);
 
             $entityManager->persist($target);

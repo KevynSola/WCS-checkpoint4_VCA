@@ -28,6 +28,9 @@ class Target
     #[ORM\ManyToOne(inversedBy: 'targets')]
     private ?User $user = null;
 
+    #[ORM\ManyToOne(inversedBy: 'targets')]
+    private ?Killer $killer = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +92,18 @@ class Target
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getKiller(): ?Killer
+    {
+        return $this->killer;
+    }
+
+    public function setKiller(?Killer $killer): self
+    {
+        $this->killer = $killer;
 
         return $this;
     }

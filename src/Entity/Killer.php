@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\KillerRepository;
@@ -22,6 +24,14 @@ class Killer
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $biography = null;
+
+    #[ORM\OneToMany(mappedBy: 'killer', targetEntity: Target::class)]
+    private Collection $targets;
+
+    public function __construct()
+    {
+        $this->targets = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -60,6 +70,36 @@ class Killer
     public function setBiography(?string $biography): self
     {
         $this->biography = $biography;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Target>
+     */
+    public function getTargets(): Collection
+    {
+        return $this->targets;
+    }
+
+    public function addTarget(Target $target): self
+    {
+        if (!$this->targets->contains($target)) {
+            $this->targets->add($target);
+            $target->setKiller($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTarget(Target $target): self
+    {
+        if ($this->targets->removeElement($target)) {
+            // set the owning side to null (unless already changed)
+            if ($target->getKiller() === $this) {
+                $target->setKiller(null);
+            }
+        }
 
         return $this;
     }

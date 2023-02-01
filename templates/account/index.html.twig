@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}| Profile
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Profile</h1>
+        <div class="card">
+            <div class="row">
+                {% for target in targets %}
+                    <div class="col-3">
+                        <h2>{{target.lastname ~ target.firstname}}</h2>
+                        <img src="{{target.poster}}" alt="{{target.poster}}">
+                        <p>
+                            Killer : 
+                        </p>
+                        <p>
+                            isKilled? :
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
