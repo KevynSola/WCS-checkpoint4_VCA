@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Killer{% endblock %}
+
+{% block body %}
+    <h1>Create new Killer</h1>
+
+    {{ include('killer/_form.html.twig') }}
+
+    <a href="{{ path('app_dashboard') }}">back to list</a>
+{% endblock %}

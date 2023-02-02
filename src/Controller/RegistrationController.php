@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Killer;
 use App\Entity\User;
-use App\Form\RegistrationKillerType;
 use App\Form\RegistrationType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

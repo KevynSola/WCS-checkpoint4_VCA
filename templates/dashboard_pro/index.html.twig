@@ -10,17 +10,22 @@
 		<h1>Dashboard of
 			{{killer.user.username}}
 		</h1>
+
 		<div class="card text-dark">
 			<div class="row">
 				{% if killer.avatar is empty %}
-					<p>You're not Avatar ?</p>
-					<a href="#">Complete your profile</a>
+					<p>You're not Avatar ? Complete your profile</p>
+					<a class="btn btn-lg btn-intermediate" href="{{path('app_killer_add', {'killer': killer.id})}}">Add Profile</a>
 				{% endif %}
+				<a class="btn btn-lg btn-light" href="{{path('app_killer_edit', {'killer': killer.id})}}">Edit profile</a>
 				{{killer.avatar}}
 				{% for skill in killer.skills %}
 					{{skill}}
 				{% endfor %}
 				{{killer.biography}}
+			</div>
+			<hr>
+			<div class="row">
 				{% for target in killer.targets %}
 					<div class="col-4">
 						{{target.firstname}}
@@ -30,6 +35,8 @@
 						<span>User:
 							{{target.user.username}}
 						</span>
+						<a class="btn btn-lg btn-intermediate" href="{{path('app_target_edit', {'target': target.id})}}">Edit contract</a>
+						{{ include('target/_delete_form.html.twig') }}
 					</div>
 				{% endfor %}
 			</div>

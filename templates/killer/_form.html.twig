@@ -1,0 +1,6 @@
+{{ form_start(form) }}
+    {{ form_row(form.avatar) }}
+    {{ form_row(form.skills) }}
+    {{ form_row(form.biography) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
