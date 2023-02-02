@@ -19,6 +19,14 @@ class ChoiceProController extends AbstractController
     #[Route('/choice', name: 'app_choice')]
     public function index(KillerRepository $killerRepository): Response
     {
+        /** @var User $user  */
+        $user = $this->getUser();
+        $roles = $user->getRoles();
+        
+        if($roles[0] === 'ROLE_KILLER'){
+            return $this->redirectToRoute('app_dashboard');
+        };
+
         return $this->render('choiceUser/index.html.twig', [
             'killers' => $killerRepository->findAll(),
         ]);

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Killer;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -14,7 +15,14 @@ class RegistrationKillerType extends AbstractType
     {
         $builder
             ->add('avatar')
-            ->add('skills')
+            ->add('skills', ChoiceType::class, [
+                'choices' => [
+                    'Fist' => 'fist',
+                    'Gun' => 'gun',
+                    'Knife' => 'knife'
+                ],
+                'multiple' => true,
+            ])
             ->add('biography', TextType::class, [
                 'required' => false,
             ])

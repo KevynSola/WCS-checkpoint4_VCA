@@ -12,6 +12,15 @@
 		</h1>
 		<div class="card text-dark">
 			<div class="row">
+				{% if killer.avatar is empty %}
+					<p>You're not Avatar ?</p>
+					<a href="#">Complete your profile</a>
+				{% endif %}
+				{{killer.avatar}}
+				{% for skill in killer.skills %}
+					{{skill}}
+				{% endfor %}
+				{{killer.biography}}
 				{% for target in killer.targets %}
 					<div class="col-4">
 						{{target.firstname}}
