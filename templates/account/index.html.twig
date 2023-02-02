@@ -5,23 +5,27 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1>Profile</h1>
-        <div class="card">
-            <div class="row">
-                {% for target in targets %}
-                    <div class="col-3">
-                        <h2>{{target.lastname ~ target.firstname}}</h2>
-                        <img src="{{target.poster}}" alt="{{target.poster}}">
-                        <p>
-                            Killer : 
-                        </p>
-                        <p>
-                            isKilled? :
-                        </p>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
+	<div class="container profile-page">
+		<h1 class="text-center my-5">Profile</h1>
+		<div class="card profile-card">
+			<div class="row">
+				{% for target in targets %}
+					<div class="col-sm-6 col-md-4 col-lg-3 col-target">
+						<h2 class="my-3">{{target.lastname ~ ' ' ~ target.firstname}}</h2>
+						<img src="{{vich_uploader_asset(target)}}" class="img-profile" alt="{{target.poster}}">
+
+						{% if target.isKilled == 1 %}
+							<p class="badge bg-bloodlight w-100">
+								State : Dead
+							</p>
+						{% else %}
+							<p class="badge bg-greenlife w-100">
+								State : Alive
+							</p>
+						{% endif %}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
 {% endblock %}

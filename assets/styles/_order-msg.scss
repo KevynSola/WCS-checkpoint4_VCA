@@ -4,7 +4,8 @@
         padding: 3rem;
         color: $light;
         background-color: transparent;
-        border: 2px solid $light;
+        border: 2px solid $blood;
+        box-shadow: inset 2px 2px 50px $blood;
 
         .msg-order {
             font-size: 2rem;
@@ -13,6 +14,7 @@
         .btn {
             width: 40%;
             margin: auto;
+            font-size: 2rem;
         }
     }
 }

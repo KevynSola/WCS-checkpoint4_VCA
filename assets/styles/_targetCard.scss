@@ -3,7 +3,8 @@
         height: 70vh;
         color: $light;
         background-color: transparent;
-        border: 2px solid $light;
+        border: 2px solid $blood;
+        box-shadow: inset 2px 2px 50px $blood;
         margin-bottom: 3rem;
 
         .row {
@@ -41,7 +42,7 @@
         }
 
         .btn-lg {
-            --bs-btn-font-size: 2.25rem;
+            --bs-btn-font-size: 2.5rem;
             font-size: var(--bs-btn-font-size);
         }
 

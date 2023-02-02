@@ -5,23 +5,41 @@
         border: 2px solid $blood;
         box-shadow: inset 2px 2px 50px $blood;
         padding: 2rem;
+        max-height: 740px;
 
         .skills-bloc {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
+            scrollbar-width: none;
+            overflow-y: scroll;
+        }
+
+        .skills-bloc::-webkit-scrollbar {
+            display: none;
         }
 
         .bio-killer {
             height: 200px;
             overflow: auto;
-            border-bottom: 4px solid $light;
             padding-bottom: 2rem;
+            scrollbar-width: none;
+            overflow-y: scroll;
+        }
+
+        .bio-killer::-webkit-scrollbar {
+            display: none;
         }
 
         .img-card-killer {
             width: 100%;
+            min-height: 200px;
+            max-height: 200px;
             object-fit: contain;
+        }
+
+        .btn-lg {
+            font-size: 2rem;
         }
     }
 }

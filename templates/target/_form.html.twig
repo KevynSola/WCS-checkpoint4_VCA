@@ -1,4 +1,10 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="bloc-already d-none">
+	{{ form_row(form.lastname) }}
+	{{ form_row(form.firstname) }}
+	{{ form_row(form.city) }}
+</div>
+{{ form_row(form.posterFile) }}
+{{ form_row(form.isKilled) }}
+<button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

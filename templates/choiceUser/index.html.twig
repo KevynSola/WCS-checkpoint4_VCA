@@ -10,17 +10,22 @@
 			<h1 class="text-center my-5">Choose your killer</h1>
 			<div class="row">
 				{% for killer in killers %}
-					<div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+					<div class="col-md-6 col-lg-6 col-xl-4 col-xxl-3 mb-4">
 						<div class="card killer-card">
-							<h2 class="h2 text-center">{{killer.id}}</h2>
-							<img src="{{asset('build/images/sushi_cat.png')}}" class="img-card-killer" alt="cats">
-							{# <img src="{{killer.avatar}}" class="img-card-killer" alt="{{killer.avatar}}"> #}
+							<h2 class="display-4 mb-4 text-center">
+								{% if killer.user is empty %}
+									{{killer.id}}
+								{% else %}
+									{{killer.user.username}}
+								{% endif %}
+							</h2>
+							<img src="{{killer.avatar}}" class="img-card-killer" alt="{{killer.avatar}}">
 							<div class="skills-bloc">
 								{% for skill in killer.skills %}
-									<p class="badge bg-sucess fs-4 my-3">{{skill}}</p>
+									<p class="badge bg-bloodlight fs-5 my-3">{{skill}}</p>
 								{% endfor %}
 							</div>
-							<p class="bio-killer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error facere quam esse quae praesentium, dolore maxime repudiandae, necessitatibus, libero laboriosam architecto beatae? Dolorem deleniti, possimus ipsam minus deserunt architecto quas blanditiis fuga fugiat hic et in maxime, consequatur est. Recusandae excepturi, cupiditate porro minima harum sed odit consequuntur voluptas officia quas ullam rerum nam ea accusamus. Odit eligendi deleniti, sint quo saepe ducimus voluptatum dicta magnam doloribus aspernatur impedit animi, et cumque eos ex pariatur ullam unde ab repudiandae quos beatae quam minima. Nesciunt odio aut vero deserunt nihil consequuntur natus alias dignissimos ipsa quis, corporis expedita ab commodi provident!</p>
+							<p class="bio-killer">{{killer.biography}}</p>
 							<a href="{{path('app_choice_killer', {'killer': killer.id})}}" class="btn btn-lg btn-outline-bloodlight my-3">Choose this ?</a>
 						</div>
 					</div>

@@ -4,8 +4,10 @@ namespace App\Form;
 
 use App\Entity\Target;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class TargetType extends AbstractType
 {
@@ -15,7 +17,17 @@ class TargetType extends AbstractType
             ->add('lastname')
             ->add('firstname')
             ->add('city')
-            ->add('poster')
+            ->add('posterFile', VichFileType::class, [
+                'required' => false,
+                'download_uri' => false,
+                'allow_delete' => false,
+            ])
+            ->add('isKilled', ChoiceType::class, [
+                'choices' => [
+                    'True' => true,
+                    'False' => false,
+                ]
+            ])
         ;
     }
 

@@ -18,7 +18,7 @@
 					<a class="btn btn-lg btn-intermediate" href="{{path('app_killer_add', {'killer': killer.id})}}">Add Profile</a>
 				{% endif %}
 				<a class="btn btn-lg btn-light" href="{{path('app_killer_edit', {'killer': killer.id})}}">Edit profile</a>
-				{{killer.avatar}}
+				<img src="{{killer.avatar}}" alt="{{killer.avatar}}">
 				{% for skill in killer.skills %}
 					{{skill}}
 				{% endfor %}

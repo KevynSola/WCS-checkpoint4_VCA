@@ -2,13 +2,19 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\KillerRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: KillerRepository::class)]
+#[Vich\Uploadable]
 class Killer
 {
     #[ORM\Id]
@@ -16,8 +22,15 @@ class Killer
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255, type: 'string', nullable: true)]
     private ?string $avatar = null;
+
+    /* #[Vich\UploadableField(mapping: 'avatar_file', fileNameProperty: 'avatar')]
+    #[Assert\File(
+        maxSize: '2M',
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
+    )]
+    private ?File $avatarFile = null; */
 
     #[ORM\Column(nullable: true)]
     private array $skills = [];
@@ -30,6 +43,9 @@ class Killer
 
     #[ORM\OneToOne(mappedBy: 'killer', cascade: ['persist', 'remove'])]
     private ?User $user = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?DatetimeInterface $updatedAt = null;
 
     public function __construct()
     {
@@ -125,6 +141,41 @@ class Killer
         }
 
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function setAvatarFile(File $image = null): Killer
+    {
+        $this->avatarFile = $image;
+        if ($image) {
+            $this->updatedAt = new DateTime('now');
+        }
+
+        return $this;
+    }
+
+    public function getAvatarFile(): ?File
+    {
+        return $this->avatarFile;
+    }
+
+    /**
+     * Get the value of updatedAt
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set the value of updatedAt
+     *
+     * @return  self
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

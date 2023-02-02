@@ -6,22 +6,37 @@ use App\Entity\Killer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class KillerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('avatar')
+            /* ->add('avatarFile', VichImageType::class, [
+                'required'      => false,
+            ])  */
+            ->add('avatar', UrlType::class, [
+                'required'      => false,
+            ]) 
             ->add('skills', ChoiceType::class, [
                 'choices' => [
                     'Fist' => 'fist',
                     'Gun' => 'gun',
-                    'Knife' => 'knife'
+                    'Knife' => 'knife',
+                    'Fiction' => 'fiction',
+                    'Real' => 'real',
+                    'Anime' => 'anime',
+                    'Solo' => 'solo',
+                    'Band' => 'band',
+                    'Crazy' => 'crazy',
+                    'Demon' => 'demon'
                 ],
                 'multiple' => true,
+                'autocomplete' => true,
             ])
             ->add('biography', TextType::class, [
                 'required' => false,

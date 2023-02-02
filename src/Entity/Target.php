@@ -2,15 +2,22 @@
 
 namespace App\Entity;
 
-use App\Repository\TargetRepository;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\TargetRepository;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\DBAL\Types\Types;
 
 #[ORM\Entity(repositoryClass: TargetRepository::class)]
+#[Vich\Uploadable]
 #[UniqueEntity(
-    fields: ['firstname', 'lastname'],
-    errorPath: 'lastname',
-    message: 'This person is already targeted.',
+fields: ['firstname', 'lastname'],
+errorPath: 'lastname',
+message: 'This person is already targeted.',
 )]
 class Target
 {
@@ -31,11 +38,24 @@ class Target
     #[ORM\Column(length: 255)]
     private ?string $poster = null;
 
+    #[Vich\UploadableField(mapping: 'poster_file', fileNameProperty: 'poster')]
+    #[Assert\File(
+        maxSize: '1M',
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
+    )]
+    private ?File $posterFile = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?DatetimeInterface $updatedAt = null;
+
     #[ORM\ManyToOne(inversedBy: 'targets')]
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'targets')]
     private ?Killer $killer = null;
+
+    #[ORM\Column]
+    private ?bool $isKilled = null;
 
     public function getId(): ?int
     {
@@ -83,11 +103,24 @@ class Target
         return $this->poster;
     }
 
-    public function setPoster(string $poster): self
+    public function setPoster(?string $poster): self
     {
         $this->poster = $poster;
 
         return $this;
+    }
+
+    public function setPosterFile(?File $posterFile = null): void
+    {
+        $this->posterFile = $posterFile;
+        if (null !== $posterFile) {
+            $this->updatedAt = new DateTime('now');
+        }
+    }
+
+    public function getPosterFile(): ?File
+    {
+        return $this->posterFile;
     }
 
     public function getUser(): ?User
@@ -110,6 +143,18 @@ class Target
     public function setKiller(?Killer $killer): self
     {
         $this->killer = $killer;
+
+        return $this;
+    }
+
+    public function isIsKilled(): ?bool
+    {
+        return $this->isKilled;
+    }
+
+    public function setIsKilled(bool $isKilled): self
+    {
+        $this->isKilled = $isKilled;
 
         return $this;
     }

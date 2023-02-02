@@ -57,6 +57,7 @@ class TargetController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $targetRepository->save($target, true);
             // send alert to kill
 
