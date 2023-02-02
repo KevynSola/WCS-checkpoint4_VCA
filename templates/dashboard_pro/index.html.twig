@@ -5,37 +5,43 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container">
+	<div class="container killer-page">
 
-		<h1>Dashboard of
-			{{killer.user.username}}
-		</h1>
+		<h1 class="text-center my-5">Dashboard</h1>
 
-		<div class="card text-dark">
-			<div class="row">
+		<div class="card killer-card">
+			<div class="btn-profile">
 				{% if killer.avatar is empty %}
 					<p>You're not Avatar ? Complete your profile</p>
-					<a class="btn btn-lg btn-intermediate" href="{{path('app_killer_add', {'killer': killer.id})}}">Add Profile</a>
+					<a class="btn btn-lg btn-bloodlight w-100" href="{{path('app_killer_add', {'killer': killer.id})}}">Add Profile</a>
 				{% endif %}
-				<a class="btn btn-lg btn-light" href="{{path('app_killer_edit', {'killer': killer.id})}}">Edit profile</a>
-				<img src="{{killer.avatar}}" alt="{{killer.avatar}}">
-				{% for skill in killer.skills %}
-					{{skill}}
-				{% endfor %}
-				{{killer.biography}}
+				<a class="btn btn-lg btn-outline-bloodlight w-100" href="{{path('app_killer_edit', {'killer': killer.id})}}">Edit profile</a>
 			</div>
-			<hr>
-			<div class="row">
+			<div class="row justify-content-center">
+				<div class="col-10 d-flex justify-content-center">
+					<img src="{{killer.avatar}}" class="img-killer mt-4" alt="{{killer.avatar}}">
+				</div>
+				<span class="line"></span>
+				<div class="col-10 d-flex justify-content-around">
+					{% for skill in killer.skills %}
+						<span class="badge bg-bloodlight">{{skill}}</span>
+					{% endfor %}
+				</div>
+				<div class="col-10 mb-4">
+					<h2 class="display-2 d-flex justify-content-center m-5">{{killer.user.username}}</h2>
+					<p class="">{{killer.biography}}</p>
+				</div>
+			</div>
+			<span class="line"></span>
+			<div class="row target-dash" id="targetToKill">
 				{% for target in killer.targets %}
-					<div class="col-4">
-						{{target.firstname}}
-						{{target.lastname}}
-						{{target.poster}}
-						{{target.city}}
-						<span>User:
-							{{target.user.username}}
-						</span>
-						<a class="btn btn-lg btn-intermediate" href="{{path('app_target_edit', {'target': target.id})}}">Edit contract</a>
+					<div class="col-sm-6 col-lg-4 col-target d-flex flex-column justify-content-end mb-5">
+						<img src="{{vich_uploader_asset(target)}}" class="img-target" alt="{{target.poster}}">
+						<u>Lastname / Firstname:</u> <p class="fw-bold">{{target.lastname ~ ' ' ~ target.firstname}}</p>
+						<u>City:</u> <p class="fw-bold">{{target.city}}</p>
+						<u>Order by:</u>
+							<p class="fw-bold">{{target.user.username}}</p>
+						<a class="btn btn-lg btn-outline-light mt-3" href="{{path('app_target_edit', {'target': target.id})}}">Edit contract</a>
 						{{ include('target/_delete_form.html.twig') }}
 					</div>
 				{% endfor %}

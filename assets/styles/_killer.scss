@@ -1,0 +1,88 @@
+.killer-page {
+    .killer-card {
+        color: $light;
+        background-color: transparent;
+        border: 2px solid $blood;
+        box-shadow: inset 2px 2px 50px $blood;
+        margin-bottom: 3rem;
+
+        .line {
+            border-bottom: 4px solid $blood;
+            width: 50%;
+            margin-block: 2rem;
+            margin-inline: auto;
+        }
+        
+        .img-killer {
+            width: 100%;
+            object-fit: contain;
+        }
+
+        .target-dash {
+            margin-inline: 6rem;
+            margin-bottom: 4rem;
+
+            .img-target {
+                width: 100%;
+                object-fit: contain;
+            }
+
+            .col-target {
+                min-height: 460px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.form-card-killer {
+    height: 70vh;
+    color: $light;
+    background-color: transparent;
+    border: 2px solid $blood;
+    box-shadow: inset 2px 2px 50px $blood;
+    margin-bottom: 3rem;
+}
+
+.btn-back {
+    --bs-card-border-radius: 0.1rem;
+    border-radius: var(--bs-card-border-radius);
+}
+
+.btn-lg {
+    --bs-btn-font-size: 2rem;
+    font-size: var(--bs-btn-font-size);
+}
+
+.form-killer {
+    width: 80%;
+    margin-inline: auto;
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group .btn {
+        width: 70%;
+        margin: auto;
+    }
+
+    textarea.form-control {
+        height: 150px;
+    }
+
+    .ts-control, .ts-dropdown {
+        font-size: 30px;
+    }
+
+    .form-label, .form-control {
+        font-size: 1.5rem;
+    }
+}

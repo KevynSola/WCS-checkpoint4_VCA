@@ -12,6 +12,7 @@
 				{% for target in targets %}
 					<div class="col-sm-6 col-md-4 col-lg-3 col-target">
 						<h2 class="my-3">{{target.lastname ~ ' ' ~ target.firstname}}</h2>
+						<p>{{'(' ~ target.city ~ ')'}}</p>
 						<img src="{{vich_uploader_asset(target)}}" class="img-profile" alt="{{target.poster}}">
 
 						{% if target.isKilled == 1 %}

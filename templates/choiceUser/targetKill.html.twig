@@ -25,7 +25,7 @@
 						<h2 class="h2 mt-3 text-center">
 							<u>Your killer</u>
 						</h2>
-						<h3 class="h3 display-3 text-center">
+						<h3 class="h3 display-3 m-4 text-center">
 							{% if killer.user is empty %}
 								{{killer.id}}
 							{% else %}
@@ -38,7 +38,7 @@
 								<p class="badge bg-bloodlight fs-4 my-3">{{skill}}</p>
 							{% endfor %}
 						</div>
-						<p class="bio-killer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error facere quam esse quae praesentium, dolore maxime repudiandae, necessitatibus, libero laboriosam architecto beatae? Dolorem deleniti, possimus ipsam minus deserunt architecto quas blanditiis fuga fugiat hic et in maxime, consequatur est. Recusandae excepturi, cupiditate porro minima harum sed odit consequuntur voluptas officia quas ullam rerum nam ea accusamus. Odit eligendi deleniti, sint quo saepe ducimus voluptatum dicta magnam doloribus aspernatur impedit animi, et cumque eos ex pariatur ullam unde ab repudiandae quos beatae quam minima. Nesciunt odio aut vero deserunt nihil consequuntur natus alias dignissimos ipsa quis, corporis expedita ab commodi provident!</p>
+						<p class="bio-killer">{{killer.biography}}</p>
 					</div>
 					<div class="col-md-6">
 						<div class="form-target">
@@ -51,6 +51,9 @@
 								{{ form_row(targetForm.firstname) }}
 								{{ form_row(targetForm.city) }}
 								{{ form_row(targetForm.posterFile) }}
+								<div class="d-none">
+									{{ form_row(targetForm.isKilled) }}
+								</div>
 								<button type="submit" class="btn btn-lg btn-bloodlight btn-kill my-5">Kill</button>
 							</div>
 							{{ form_end(targetForm) }}

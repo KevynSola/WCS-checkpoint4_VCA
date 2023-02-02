@@ -1,0 +1,24 @@
+.form-target-killer{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+
+        .form-select-lg {
+            font-size: 1.5rem;
+        }
+    }
+
+    .form-group .btn {
+        width: 70%;
+        margin: auto;
+    }
+
+    .form-label, .form-control {
+        font-size: 1.5rem;
+    }
+}

@@ -24,8 +24,11 @@ class TargetType extends AbstractType
             ])
             ->add('isKilled', ChoiceType::class, [
                 'choices' => [
-                    'True' => true,
                     'False' => false,
+                    'True' => true,
+                ],
+                'attr' => [
+                    'class' => 'form-select-lg',
                 ]
             ])
         ;

@@ -1,6 +1,10 @@
-{{ form_start(form) }}
-    {{ form_row(form.avatar) }}
-    {{ form_row(form.skills) }}
-    {{ form_row(form.biography) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="form-killer">
+	{{ form_start(form) }}
+	<div class="form-group">
+		{{ form_row(form.avatar) }}
+		{{ form_row(form.skills) }}
+		{{ form_row(form.biography) }}
+		<button class="btn btn-lg btn-outline-light my-5">{{ button_label|default('Save') }}</button>
+	</div>
+	{{ form_end(form) }}
+</div>

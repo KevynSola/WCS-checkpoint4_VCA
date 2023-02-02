@@ -6,7 +6,19 @@
         height: 70vh;
         color: $light;
         background-color: transparent;
-        border: 2px solid $light;
+        border: 2px solid $blood;
+        box-shadow: inset 2px 2px 50px $blood;
+        margin-bottom: 3rem;
+    }
+
+    .btn-back {
+        --bs-card-border-radius: 0.1rem;
+        border-radius: var(--bs-card-border-radius);
+    }
+
+    .btn-lg {
+        --bs-btn-font-size: 2.5rem;
+        font-size: var(--bs-btn-font-size);
     }
 
     .form-register {
@@ -28,10 +40,10 @@
         .form-label, .form-control {
             font-size: 1.5rem;
         }
-
-        .btn-lg {
-            --bs-btn-font-size: 2.25rem;
-            font-size: var(--bs-btn-font-size);
-        }
     }
+}
+
+.bck {
+    display: flex;
+    align-items: center;
 }

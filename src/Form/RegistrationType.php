@@ -33,7 +33,7 @@ class RegistrationType extends AbstractType
                     ],
                     'label' => false,
                     'attr' => [
-                        'class' => 'form-control-lg'
+                        'class' => 'form-control form-control-lg form-select-lg'
                     ]
                 ],
             ])
