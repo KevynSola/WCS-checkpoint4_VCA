@@ -2,7 +2,8 @@
     .killer-card {
         color: $light;
         background-color: transparent;
-        border: 2px solid $light;
+        border: 2px solid $blood;
+        box-shadow: inset 2px 2px 50px $blood;
         padding: 2rem;
 
         .skills-bloc {
