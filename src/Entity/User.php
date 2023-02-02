@@ -40,9 +40,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(inversedBy: 'user', cascade: ['persist', 'remove'])]
     private ?Killer $killer = null;
 
-    #[ORM\Column]
-    private ?bool $isKiller = null;
-
     public function __construct()
     {
         $this->targets = new ArrayCollection();
@@ -156,18 +153,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setKiller(?Killer $killer): self
     {
         $this->killer = $killer;
-
-        return $this;
-    }
-
-    public function isIsKiller(): ?bool
-    {
-        return $this->isKiller;
-    }
-
-    public function setIsKiller(bool $isKiller): self
-    {
-        $this->isKiller = $isKiller;
 
         return $this;
     }

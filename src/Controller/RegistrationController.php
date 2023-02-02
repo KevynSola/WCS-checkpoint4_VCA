@@ -35,7 +35,10 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-            $user->setIsKiller($form->get('isKiller')->getData());
+            if($user->getRoles() != ['ROLE_VISITOR']){
+                $killer = new Killer();
+                $user->setKiller($killer);
+            };
 
             $entityManager->persist($user);
             $entityManager->flush();

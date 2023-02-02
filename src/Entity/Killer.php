@@ -16,10 +16,10 @@ class Killer
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $avatar = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private array $skills = [];
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]

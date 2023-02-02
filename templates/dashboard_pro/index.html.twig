@@ -1,17 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{parent()}}| Dashboard
+	{{parent()}}| Dashboard
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        {% for killer in killers %}
-            
-        <h1>Dashboard {{killer.username}}</h1>
-        <div class="card">
-            
-        </div>
-        {% endfor %}
-    </div>
+	<div class="container">
+
+		<h1>Dashboard of
+			{{killer.user.username}}
+		</h1>
+		<div class="card text-dark">
+			<div class="row">
+				{% for target in killer.targets %}
+					<div class="col-4">
+						{{target.firstname}}
+						{{target.lastname}}
+						{{target.poster}}
+						{{target.city}}
+						<span>User:
+							{{target.user.username}}
+						</span>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
 {% endblock %}

@@ -25,18 +25,14 @@ class RegistrationType extends AbstractType
                     'class' => 'form-control-lg'
                 ]
             ])
-            ->add('isKiller', CheckboxType::class, [
-                'label' => 'Are you a killer ?',
-                'required' => false,
-            ])
             ->add('roles', CollectionType::class, [
                 'entry_type' => ChoiceType::class,
                 'entry_options' => [
                     'choices' => [
-                        'USER' => 'ROLE_USER',
+                        'VISITOR' => 'ROLE_VISITOR',
                         'KILLER' => 'ROLE_KILLER'
                     ],
-                    'label' => 'Roles:',
+                    'label' => false,
                 ],
             ])
             ->add('plainPassword', PasswordType::class, [

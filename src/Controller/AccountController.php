@@ -7,9 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/visitor')]
 class AccountController extends AbstractController
 {
-    #[Route('/user/account', name: 'app_account')]
+    #[Route('/account', name: 'app_account')]
     public function index(TargetRepository $targetRepository): Response
     {
         $user = $this->getUser();
