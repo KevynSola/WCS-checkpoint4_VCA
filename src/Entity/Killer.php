@@ -16,10 +16,10 @@ class Killer
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $avatar = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private array $skills = [];
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -27,6 +27,9 @@ class Killer
 
     #[ORM\OneToMany(mappedBy: 'killer', targetEntity: Target::class)]
     private Collection $targets;
+
+    #[ORM\OneToOne(mappedBy: 'killer', cascade: ['persist', 'remove'])]
+    private ?User $user = null;
 
     public function __construct()
     {
@@ -100,6 +103,28 @@ class Killer
                 $target->setKiller(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($user === null && $this->user !== null) {
+            $this->user->setKiller(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($user !== null && $user->getKiller() !== $this) {
+            $user->setKiller($this);
+        }
+
+        $this->user = $user;
 
         return $this;
     }

@@ -22,7 +22,6 @@ class RegistrationController extends AbstractController
         EntityManagerInterface $entityManager
     ): Response
     {
-
         $user = new User();
         $form = $this->createForm(RegistrationType::class, $user);
         $form->handleRequest($request);
@@ -35,6 +34,11 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+            $roles = $form->get('roles')->getData();
+            if($roles != ['ROLE_VISITOR']){
+                $killer = new Killer();
+                $user->setKiller($killer);
+            };
 
             $entityManager->persist($user);
             $entityManager->flush();
