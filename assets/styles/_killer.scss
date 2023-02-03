@@ -38,6 +38,12 @@
     }
 }
 
+@media(max-width: 768px) {
+    .killer-page .killer-card .target-dash {
+        margin-inline: 2rem;
+    }
+}
+
 .form-card-killer {
     height: 70vh;
     color: $light;
