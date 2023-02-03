@@ -12,14 +12,14 @@
 		<div class="card killer-card">
 			<div class="btn-profile">
 				{% if killer.avatar is empty %}
-					<p>You're not Avatar ? Complete your profile</p>
+					<p class="text-center m-4">You're not Avatar ? Complete your profile</p>
 					<a class="btn btn-lg btn-bloodlight w-100" href="{{path('app_killer_add', {'killer': killer.id})}}">Add Profile</a>
 				{% endif %}
 				<a class="btn btn-lg btn-outline-bloodlight w-100" href="{{path('app_killer_edit', {'killer': killer.id})}}">Edit profile</a>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-10 d-flex justify-content-center">
-					<img src="{{killer.avatar}}" class="img-killer mt-4" alt="{{killer.avatar}}">
+					<img src="{{vich_uploader_asset(killer)}}" class="img-killer mt-4" alt="{{killer.avatar}}">
 				</div>
 				<span class="line"></span>
 				<div class="col-10 d-flex justify-content-around">

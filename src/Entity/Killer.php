@@ -22,15 +22,15 @@ class Killer
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, type: 'string', nullable: true)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $avatar = null;
 
-    /* #[Vich\UploadableField(mapping: 'avatar_file', fileNameProperty: 'avatar')]
+    #[Vich\UploadableField(mapping: 'avatar_file', fileNameProperty: 'avatar')]
     #[Assert\File(
-        maxSize: '2M',
-        mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
+    maxSize: '1M',
+    mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
     )]
-    private ?File $avatarFile = null; */
+    private ?File $avatarFile = null;
 
     #[ORM\Column(nullable: true)]
     private array $skills = [];
@@ -62,7 +62,7 @@ class Killer
         return $this->avatar;
     }
 
-    public function setAvatar(string $avatar): self
+    public function setAvatar(?string $avatar): self
     {
         $this->avatar = $avatar;
 
@@ -145,14 +145,12 @@ class Killer
         return $this;
     }
 
-    public function setAvatarFile(File $image = null): Killer
+    public function setAvatarFile(?File $avatarFile = null): void
     {
-        $this->avatarFile = $image;
-        if ($image) {
+        $this->avatarFile = $avatarFile;
+        if (null !== $avatarFile) {
             $this->updatedAt = new DateTime('now');
         }
-
-        return $this;
     }
 
     public function getAvatarFile(): ?File
@@ -166,17 +164,5 @@ class Killer
     public function getUpdatedAt()
     {
         return $this->updatedAt;
-    }
-
-    /**
-     * Set the value of updatedAt
-     *
-     * @return  self
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
     }
 }

@@ -9,19 +9,18 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Vich\UploaderBundle\Form\Type\VichImageType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class KillerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            /* ->add('avatarFile', VichImageType::class, [
-                'required'      => false,
-            ])  */
-            ->add('avatar', UrlType::class, [
-                'required'      => false,
-            ]) 
+            ->add('avatarFile', VichFileType::class, [
+                'required' => false,
+                'download_uri' => false,
+                'allow_delete' => false,
+            ])
             ->add('skills', ChoiceType::class, [
                 'choices' => [
                     'Fist' => 'fist',

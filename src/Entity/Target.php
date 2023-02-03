@@ -158,4 +158,12 @@ class Target
 
         return $this;
     }
+
+    /**
+     * Get the value of updatedAt
+     */ 
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
 }
