@@ -32,7 +32,7 @@
 								{{killer.user.username}}
 							{% endif %}
 						</h3>
-						<img src="{{killer.avatar}}" class="img-card-killer" alt="{{killer.avatar}}">
+						<img src="{{vich_uploader_asset(killer)}}" class="img-card-killer" alt="{{killer.avatar}}">
 						<div class="skills-bloc">
 							{% for skill in killer.skills %}
 								<p class="badge bg-bloodlight fs-4 my-3">{{skill}}</p>

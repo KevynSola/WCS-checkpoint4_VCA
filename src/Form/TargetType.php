@@ -21,6 +21,7 @@ class TargetType extends AbstractType
                 'required' => false,
                 'download_uri' => false,
                 'allow_delete' => false,
+                'help' => 'Max size for image : 1Mb'
             ])
             ->add('isKilled', ChoiceType::class, [
                 'choices' => [
